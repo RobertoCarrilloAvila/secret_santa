@@ -5,9 +5,7 @@ class Relationship < ApplicationRecord
     'parent' => 'child',
     'child' => 'parent',
     'sibling' => 'sibling',
-    'spouse' => 'spouse',
-    'grandparent' => 'grandchild',
-    'grandchild' => 'grandparent'
+    'spouse' => 'spouse'
   }.freeze
 
   belongs_to :person
