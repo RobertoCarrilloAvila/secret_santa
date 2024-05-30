@@ -1,24 +1,55 @@
-# README
+# Secret Santa Assignment Service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a Secret Santa assignment service built with Ruby on Rails. It ensures that all rules are respected while assigning Secret Santa pairs, such as not assigning the same person within the last three years and not assigning immediate family members to each other.
 
-Things you may want to cover:
+## Technologies Used
 
-* Ruby version
+- Ruby 3.1.0
+- Rails 7.0.8
+- PostgreSQL
 
-* System dependencies
+## Setup and Installation
 
-* Configuration
+### Prerequisites
 
-* Database creation
+Make sure you have the following installed:
 
-* Database initialization
+- Ruby 3.1.0
+- Rails 7.0.8
+- PostgreSQL
 
-* How to run the test suite
+### Steps to Setup
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone the repository:
 
-* Deployment instructions
+    ```sh
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
 
-* ...
+2. Install the required gems:
+
+    ```sh
+    bundle install
+    ```
+
+3. Setup the database:
+
+    ```sh
+    rails db:create db:setup
+    ```
+
+4. Start the Rails server:
+
+    ```sh
+    rails server
+    ```
+
+Visit `http://localhost:3000` to view the application.
+
+### Models
+
+- **Family:** Represents a family unit. This model groups related people together.
+- **Person:** Represents an individual person. Each person belongs to a family and can have relationships with other people.
+- **Relationship:** Represents the relationships between people (parent, child, sibling, spouse). This model helps in ensuring the rules are respected when assigning Secret Santa pairs.
+- **GiftAssigment:** Stores the Secret Santa assignments. This model keeps track of who is giving a gift to whom and in which year.
