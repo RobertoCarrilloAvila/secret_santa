@@ -10,39 +10,24 @@ This project is a Secret Santa assignment service built with Ruby on Rails. It e
 
 ## Setup and Installation
 
-### Prerequisites
-
-Make sure you have the following installed:
-
-- Ruby 3.1.0
-- Rails 7.0.8
-- PostgreSQL
-
 ### Steps to Setup
 
-1. Clone the repository:
-
-    ```sh
-    git clone <repository-url>
-    cd <repository-directory>
-    ```
-
-2. Install the required gems:
+1. Install the required gems:
 
     ```sh
     bundle install
     ```
 
-3. Setup the database:
+2. Setup the database:
 
     ```sh
-    rails db:create db:setup
+    bundle exec rails db:setup
     ```
 
-4. Start the Rails server:
+3. Start the Rails server:
 
     ```sh
-    rails server
+    bundle exec rails server
     ```
 
 Visit `http://localhost:3000` to view the application.
