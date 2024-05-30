@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_30_023314) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_30_052941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_023314) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "gift_assigments", force: :cascade do |t|
+    t.bigint "giver_id", null: false
+    t.bigint "recipient_id", null: false
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["giver_id", "recipient_id", "year"], name: "index_gift_assigments_on_giver_id_and_recipient_id_and_year", unique: true
+    t.index ["giver_id"], name: "index_gift_assigments_on_giver_id"
+    t.index ["recipient_id"], name: "index_gift_assigments_on_recipient_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -39,6 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_023314) do
     t.index ["person_id"], name: "index_relationships_on_person_id"
   end
 
+  add_foreign_key "gift_assigments", "people", column: "giver_id"
+  add_foreign_key "gift_assigments", "people", column: "recipient_id"
   add_foreign_key "people", "families"
   add_foreign_key "relationships", "people"
   add_foreign_key "relationships", "people", column: "linked_person_id"
