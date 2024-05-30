@@ -4,4 +4,12 @@ class GiftAssigment < ApplicationRecord
 
   validates :year, presence: true
   validates :giver_id, uniqueness: { scope: %i[recipient_id year] }
+
+  def self.current_assigment(family)
+    joins(:giver)
+      .where(
+        year: Time.zone.today.year,
+        giver: family.people
+      )
+  end
 end

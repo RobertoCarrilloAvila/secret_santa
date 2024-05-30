@@ -1,0 +1,18 @@
+<h1><%= @family.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Giver</th>
+      <th>Receiver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gift_assigments.each do |gift_assignment| %>
+      <tr>
+        <td><%= gift_assignment.giver.name %></td>
+        <td><%= gift_assignment.recipient.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -2,5 +2,7 @@
 
 Rails.application.routes.draw do
   root 'families#index'
-  resources :families
+  resources :families do
+    resources :gift_assigments, only: %i[index create]
+  end
 end
