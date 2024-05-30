@@ -12,94 +12,91 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/families", type: :request do
-  
+RSpec.describe '/families', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Family. As you add validations to Family, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Family.create! valid_attributes
       get families_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       family = Family.create! valid_attributes
       get family_url(family)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_family_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       family = Family.create! valid_attributes
       get edit_family_url(family)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Family" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Family' do
+        expect do
           post families_url, params: { family: valid_attributes }
-        }.to change(Family, :count).by(1)
+        end.to change(Family, :count).by(1)
       end
 
-      it "redirects to the created family" do
+      it 'redirects to the created family' do
         post families_url, params: { family: valid_attributes }
         expect(response).to redirect_to(family_url(Family.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Family" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Family' do
+        expect do
           post families_url, params: { family: invalid_attributes }
-        }.to change(Family, :count).by(0)
+        end.not_to change(Family, :count)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post families_url, params: { family: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
+      end
 
-      it "updates the requested family" do
+      it 'updates the requested family' do
         family = Family.create! valid_attributes
         patch family_url(family), params: { family: new_attributes }
         family.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the family" do
+      it 'redirects to the family' do
         family = Family.create! valid_attributes
         patch family_url(family), params: { family: new_attributes }
         family.reload
@@ -107,26 +104,24 @@ RSpec.describe "/families", type: :request do
       end
     end
 
-    context "with invalid parameters" do
-    
+    context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         family = Family.create! valid_attributes
         patch family_url(family), params: { family: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested family" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested family' do
       family = Family.create! valid_attributes
-      expect {
+      expect do
         delete family_url(family)
-      }.to change(Family, :count).by(-1)
+      end.to change(Family, :count).by(-1)
     end
 
-    it "redirects to the families list" do
+    it 'redirects to the families list' do
       family = Family.create! valid_attributes
       delete family_url(family)
       expect(response).to redirect_to(families_url)

@@ -12,5 +12,12 @@
   <%= link_to "Edit this family", edit_family_path(@family) %> |
   <%= link_to "Back to families", families_path %>
 
+  
+  <% if current_assigment? %>
+    <%= link_to 'show current gift assigment', family_gift_assigments_path(@family) %>
+  <% else %>
+    <%= button_to 'show current gift assigment', family_gift_assigments_path(family_id: @family.id), method: :post %>
+  <% end %>
+  
   <%= button_to "Destroy this family", @family, method: :delete %>
 </div>

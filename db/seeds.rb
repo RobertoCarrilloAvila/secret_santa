@@ -24,7 +24,7 @@ sofia = Person.create(name: 'Sofía', family: family_moises)
 diego = Person.create(name: 'Diego', family: family_moises)
 
 # Hija de Luis y Julia
-laura_hija = Person.create(name: 'Laura', family: family_moises)
+laura_hija = Person.create(name: 'Karen', family: family_moises)
 
 # Relaciones de padres e hijos
 Relationship.create(person: moises, linked_person: roberto, relationship_type: 'parent')
@@ -59,4 +59,3 @@ Relationship.create(person: carlos, linked_person: diego, relationship_type: 'pa
 # Hija de Luis y Julia
 Relationship.create(person: luis, linked_person: laura_hija, relationship_type: 'parent')
 Relationship.create(person: julia, linked_person: laura_hija, relationship_type: 'parent')
-
