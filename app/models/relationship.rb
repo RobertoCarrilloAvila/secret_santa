@@ -5,8 +5,7 @@ class Relationship < ApplicationRecord
     'parent' => 'child',
     'child' => 'parent',
     'sibling' => 'sibling',
-    'wife' => 'husband',
-    'husband' => 'wife',
+    'spouse' => 'spouse',
     'grandparent' => 'grandchild',
     'grandchild' => 'grandparent'
   }.freeze
