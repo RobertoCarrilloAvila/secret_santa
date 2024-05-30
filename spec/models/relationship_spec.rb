@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Relationship do
@@ -16,8 +18,10 @@ RSpec.describe Relationship do
   describe 'callbacks' do
     let(:father) { create(:person) }
     let(:son) { create(:person) }
-    let(:inverse_relationship) { described_class.find_by(person: son, linked_person: father, relationship_type: 'child') }
-    
+    let(:inverse_relationship) do
+      described_class.find_by(person: son, linked_person: father, relationship_type: 'child')
+    end
+
     describe 'after_create' do
       let(:relationship) { build(:relationship, person: father, linked_person: son, relationship_type: 'parent') }
 
