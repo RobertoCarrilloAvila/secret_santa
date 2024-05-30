@@ -2,6 +2,12 @@
 
 <%= render @family %>
 
+<ul>
+  <% @family.people.each do |person| %>
+    <li><%= person.name %></li>
+  <% end %>
+</ul>
+
 <div>
   <%= link_to "Edit this family", edit_family_path(@family) %> |
   <%= link_to "Back to families", families_path %>
